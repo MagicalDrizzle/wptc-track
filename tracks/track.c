@@ -91,7 +91,7 @@ __attribute__((nonnull)) static void init_storm_arg(struct storm_arg *stormp)
   stormp->wind = 0;
   stormp->extra = false;  /* Hmm, what should be default? */
   stormp->format = 0;
-  stormp->input = "../data/natlantic.txt\0";
+  stormp->input = "data/natlantic.txt\0";
   stormp->negx = true; /* longitude given in negatives */
   stormp->negy = false;
   stormp->wind_format = MPH;
@@ -195,8 +195,8 @@ static struct args read_args(const int argc, char **argv)
     .lines = 0.075,
     .alpha = 1.0,
     .template = true,
-    .bg = "../data/bg8192.png",
-    .output = "../png/output.png",
+    .bg = "data/bg8192.png",
+    .output = "png/output.png",
     .scale = SSHWS_CODE,
     .useoldcolorkey = 0,
     .skipasynoptic = 1,
@@ -1251,7 +1251,7 @@ static void write_stormdata(struct stormdata *storms, struct args *args)
     }
   }
 
-  file = fopen(args->output, "w+");
+  file = fopen(args->output, "wb+");
   cairo_surface_write_to_png_stream(surface, write_callback, file);
 
   cairo_destroy(cr);
