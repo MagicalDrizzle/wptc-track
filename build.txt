@@ -1,0 +1,7 @@
+meson wrap update
+
+meson setup -Dprefix=$HOME/.build -Dbuildtype=release -Ddefault_library=static -Dstrip=true -Db_lto=true -Dtests=disabled -Dglib=disabled -Ddwrite=disabled -Dfontconfig=disabled -Dfreetype=disabled -Dpixman:tests=disabled -Dpixman:demos=disabled -Dzlib:tests=disabled build
+
+PKG_CONFIG_PATH=$HOME/.build/lib64/pkgconfig/ gcc -w -O2 -flto *.c -o track `pkg-config --cflags --libs --static cairo`
+
+gcc -w -O2 -flto *.c -o track -I$HOME/.build/include/cairo -I$HOME/.build/include -I$HOME/.build/include/pixman-1 -pthread -L$HOME/.build/lib64 -lcairo -ldl -lpng16 -lz -lpixman-1 -lm -pthread
