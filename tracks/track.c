@@ -1114,7 +1114,7 @@ static void infer_output_location(char* output_location, struct stormdata *storm
 	} else if (storms->nstorms > 1) { //Avoid == 0
 		char season_name[40];
 		memset(season_name, 0, 40);
-		int basin_name_length = 0;
+		// int basin_name_length = 0; // unused?
 		bool is_shem = 0;
 		struct storm storm = storms->storms[0];
 		if (strlen(storm.header.basin) == 0) {
@@ -1139,7 +1139,7 @@ static void infer_output_location(char* output_location, struct stormdata *storm
 			if (startinglon <= -70.0) {
 				strncpy(season_name, "South-East Pacific cyclone season", 34);
 			} else if (startinglon <= 25.0) {
-			        strncpy(season_name, "South Atlantic hurricane season", 31);
+			        strncpy(season_name, "South Atlantic hurricane season", 32);
 			} else if (startinglon <= 90.0) {
 				strncpy(season_name, "South-West Indian Ocean cyclone season", 39);
 			} else if (startinglon <= 160.0) {

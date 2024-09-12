@@ -1,5 +1,5 @@
 output.png
-track
+# track
 data/*/btk/*.dat
 data/*.dat
 .vscode
